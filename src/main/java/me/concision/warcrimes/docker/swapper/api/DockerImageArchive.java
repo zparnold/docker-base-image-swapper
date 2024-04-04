@@ -16,8 +16,6 @@ import me.concision.warcrimes.docker.swapper.util.io.RandomAccessTarArchiveFile.
 import me.concision.warcrimes.docker.swapper.util.io.RandomAccessTarArchiveFile.ArchiveFile;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 import org.apache.commons.compress.archivers.tar.TarArchiveOutputStream;
-import org.apache.commons.compress.utils.IOUtils;
-
 import java.io.ByteArrayInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -43,7 +41,6 @@ public class DockerImageArchive {
     }
 
 
-    // TODO: write an RFC-compliant JSON library that does not suck
     public static DockerImageArchive from(@NonNull RandomAccessTarArchiveFile tarArchive) throws IOException {
         DockerImageArchive imageArchive = new DockerImageArchive();
 
@@ -221,7 +218,7 @@ public class DockerImageArchive {
             for (TarEntry entry : entries) {
                 InputStream stream = entry.supplier.stream(entry.entry);
                 tarStream.putArchiveEntry(entry.entry);
-                IOUtils.copy(stream, tarStream);
+                stream.transferTo(tarStream);
                 tarStream.closeArchiveEntry();
             }
         }

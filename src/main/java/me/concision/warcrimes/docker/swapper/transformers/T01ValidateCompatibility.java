@@ -1,14 +1,8 @@
 package me.concision.warcrimes.docker.swapper.transformers;
 
-import com.google.gson.JsonObject;
-import me.concision.warcrimes.docker.swapper.api.DockerImage;
-import me.concision.warcrimes.docker.swapper.api.DockerImageArchive;
-import me.concision.warcrimes.docker.swapper.api.DockerImageConfig;
-import me.concision.warcrimes.docker.swapper.api.DockerLayer;
 import me.concision.warcrimes.docker.swapper.transformer.ImageState;
 import me.concision.warcrimes.docker.swapper.transformer.ImageTransformer;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class T01ValidateCompatibility implements ImageTransformer {

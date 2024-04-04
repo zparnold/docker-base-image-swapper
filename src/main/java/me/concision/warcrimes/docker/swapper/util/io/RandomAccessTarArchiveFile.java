@@ -55,7 +55,8 @@ public class RandomAccessTarArchiveFile extends InputStream implements Iterable<
         try {
             CountingInputStream countingInputStream = new CountingInputStream(stream);
             TarArchiveInputStream tarStream = new TarArchiveInputStream(countingInputStream);
-            for (TarArchiveEntry entry; (entry = tarStream.getNextTarEntry()) != null; ) {
+            TarArchiveEntry entry;
+            while ((entry = tarStream.getNextEntry()) != null) {
                 long startingPosition = countingInputStream.getBytesRead() - TarArchiveEntry.DEFAULT_RCDSIZE;
                 entries.put(entry.getName(), new ArchiveEntryOffset(startingPosition, entry));
 
@@ -104,7 +105,7 @@ public class RandomAccessTarArchiveFile extends InputStream implements Iterable<
 
         stream.seek(archiveEntry.offset);
         tarStream = new TarArchiveInputStream(stream);
-        tarStream.getNextTarEntry();
+        tarStream.getNextEntry(); // Replace deprecated method
         return archiveEntry.entry;
     }
 

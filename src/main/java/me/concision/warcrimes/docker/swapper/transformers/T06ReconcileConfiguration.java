@@ -3,7 +3,6 @@ package me.concision.warcrimes.docker.swapper.transformers;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonPrimitive;
-import lombok.extern.log4j.Log4j2;
 import me.concision.warcrimes.docker.swapper.api.DockerContainerConfig;
 import me.concision.warcrimes.docker.swapper.api.DockerImageConfig;
 import me.concision.warcrimes.docker.swapper.api.DockerLayerManifest;
@@ -14,7 +13,6 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Log4j2
 public class T06ReconcileConfiguration implements ImageTransformer {
     @Override
     public void transform(ImageState state) {
@@ -87,7 +85,6 @@ public class T06ReconcileConfiguration implements ImageTransformer {
             JsonArray inputEnv = inputJson.getAsJsonArray("Env");
             JsonArray outEnv = new JsonArray();
 
-            boolean isPathHandled = false;
             JsonArray oldEnv = oldJson.get("Env") != null && !oldJson.get("Env").isJsonNull() ? oldJson.getAsJsonArray("Env") : null;
             if (oldEnv != null) {
                 for (int i = 0; i < inputEnv.size(); i++) {

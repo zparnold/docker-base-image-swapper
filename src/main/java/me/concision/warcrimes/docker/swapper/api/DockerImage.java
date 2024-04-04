@@ -9,7 +9,6 @@ import com.google.gson.JsonSyntaxException;
 import lombok.Data;
 import lombok.NonNull;
 import lombok.ToString;
-import lombok.extern.log4j.Log4j2;
 import me.concision.warcrimes.docker.swapper.util.io.RandomAccessTarArchiveFile;
 import org.apache.commons.compress.archivers.tar.TarArchiveEntry;
 
@@ -18,7 +17,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
-@Log4j2
 @Data
 public class DockerImage {
     @ToString.Exclude

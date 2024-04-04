@@ -1,7 +1,6 @@
 package me.concision.warcrimes.docker.swapper.transformers;
 
 import com.rits.cloning.Cloner;
-import lombok.extern.log4j.Log4j2;
 import me.concision.warcrimes.docker.swapper.api.DockerImage;
 import me.concision.warcrimes.docker.swapper.api.DockerLayer;
 import me.concision.warcrimes.docker.swapper.api.DockerLayerManifest;
@@ -15,7 +14,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-@Log4j2
 public class T05RelinkLayerIds implements ImageTransformer {
     @Override
     public void transform(ImageState state) {
